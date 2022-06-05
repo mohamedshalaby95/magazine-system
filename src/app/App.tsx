@@ -7,6 +7,8 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "../theme/palette";
+import Home from "../pages/home/Home";
+
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className="App">
           <Suspense fallback={<div>Loaaaaaading.....</div>}>
-            <BrowserRouter>sjfjbcdejbv</BrowserRouter>
+            <BrowserRouter>
+            <Home/>
+            </BrowserRouter>
           </Suspense>
         </div>
       </ThemeProvider>

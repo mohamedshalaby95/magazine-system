@@ -148,15 +148,15 @@ export const theme = createTheme({
     },
     divider: '#E6E8F0',
     primary: {
-      main: '#5048E5',
-      light: '#828DF8',
+      main: '#4D7E96',
+      light: '#272727',
       dark: '#3832A0',
       contrastText: '#FFFFFF'
     },
     secondary: {
-      main: '#10B981',
+      main: '#E6E8F0',
       light: '#3FC79A',
-      dark: '#0B815A',
+      dark: '#B1B1B1',
       contrastText: '#FFFFFF'
     },
     success: {
@@ -185,7 +185,7 @@ export const theme = createTheme({
     },
     text: {
       primary: '#121828',
-      secondary: '#65748B',
+      secondary: '#898989',
       disabled: 'rgba(55, 65, 81, 0.48)'
     }
   },
@@ -223,14 +223,14 @@ export const theme = createTheme({
     button: {
       fontWeight: 600
     },
-    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
+    fontFamily: '"Open Sans","Oswald"',
     body1: {
       fontSize: '1rem',
       fontWeight: 400,
       lineHeight: 1.5
     },
     body2: {
-      fontSize: '0.875rem',
+      // fontSize: '0.875rem',
       fontWeight: 400,
       lineHeight: 1.57
     },
