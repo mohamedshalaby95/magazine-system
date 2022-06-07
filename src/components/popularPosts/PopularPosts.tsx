@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Button, Grid, useMediaQuery, useTheme } from "@mui/material";
 import Person from "../../assets/person.png";
@@ -9,7 +9,8 @@ import {
   BoxStyleTwo,
   BoxStyle,
 } from "../../styled/PopularPost";
-const PopularPosts = () => {
+import { PopularPostsInterFace } from "../../types/popularPosts";
+const PopularPosts:React.FC<PopularPostsInterFace> = (props) => {
   return (
     <StyledGridRight>
       <StyledGridRightTitle>
@@ -23,8 +24,8 @@ const PopularPosts = () => {
           sx={{ height: "50px", width: "80px" }}
         />
         <BoxStyleTwo >
-          Kylie Jenner, Bella Hadid, and More Celebrities…
-          <BoxStyle>Nov 20, 2020</BoxStyle>
+          {props.data}
+          <BoxStyle>{props.date}</BoxStyle>
         </BoxStyleTwo>
       </StyledGridRightTitle>{" "}
     </StyledGridRight>
