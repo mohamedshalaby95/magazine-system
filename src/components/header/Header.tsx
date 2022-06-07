@@ -1,5 +1,12 @@
 import { theme } from "../../theme/palette";
-import { Box, Typography } from "@mui/material";
+import {
+  Box,
+  Tabs,
+  Typography,
+  Tab,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import PersonIcon from "@mui/icons-material/Person";
 import React, { useState } from "react";
@@ -18,6 +25,7 @@ import {
   MenuItem,
   FormControlLabel,
 } from "@mui/material";
+import DrawerList from "./Drawer";
 
 const Header = () => {
   let newDate = new Date();
@@ -91,8 +99,6 @@ const Header = () => {
     backgroundColor: `${theme.palette.primary.light}`,
   }));
   const StyledImage = styled(Box)(({ theme }) => ({
-    // height: "100px",
-    width: "150px",
     padding: "0px 0px 0px 50px",
   }));
   const StyledNavBottom = styled(Box)(({ theme }) => ({
@@ -105,6 +111,7 @@ const Header = () => {
     alignItems: "center",
     justifyContent: "space-between",
     padding: "0px 0px 0px 10px",
+    // position:"sticky"
   }));
   const StyledListNavLeft = styled(Box)(({ theme }) => ({
     color: `${theme.palette.primary.contrastText}`,
@@ -121,14 +128,26 @@ const Header = () => {
     justifyContent: "space-between",
     padding: "0px 10px 0px 10px",
   }));
-  const StyledListNavLeftContent = styled(Box)(({ theme }) => ({
-    margin: "10px",
+  const StyledListNavLeftContent = styled(Tab)(({ theme }) => ({
+    color: `${theme.palette.primary.contrastText}`,
     fontSize: "18px",
     textTransform: "uppercase",
     fontFamily: "Oswald",
-    '&:hover':{
-      // backgroundColor:"red"
-    }
+    "&:hover": {
+      color: `${theme.palette.primary.main}`,
+    },
+  }));
+  const StyledListNavLeftMore = styled(Box)(({ theme }) => ({
+    color: `${theme.palette.primary.contrastText}`,
+    fontSize: "18px",
+    textTransform: "uppercase",
+    fontFamily: "Oswald",
+    marginLeft: "15px",
+    // padding: "6px",
+    fontWeight: "bold",
+    "&:hover": {
+      color: `${theme.palette.primary.main}`,
+    },
   }));
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -188,12 +207,12 @@ const Header = () => {
   }));
   const StyledBox = styled(Box)(({ theme }) => ({
     height: "140px",
-    width: "300px",
+    width: "350px",
     position: "absolute",
-    left: "95px",
+    left: "148px",
     marginTop: "24px",
     fontFamily: "Oswald",
-    cursor:"pointer",
+    cursor: "pointer",
     backgroundColor: `${theme.palette.primary.light}`,
     display: "flex",
     justifyContent: "space-between",
@@ -203,6 +222,11 @@ const Header = () => {
     width: "1.5px",
     marginTop: "5px",
     backgroundColor: `${theme.palette.primary.contrastText}`,
+  }));
+  const StypledMedia = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   }));
   const [values, setValues] = React.useState(["Egypt", "UK Edition"]);
   const [selected, setSelected] = useState("Egypt");
@@ -216,122 +240,144 @@ const Header = () => {
     setIsOpened((wasOpened) => !wasOpened);
   }
 
+  const [value, setValue] = useState(0);
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down(1117));
+
+  const PAGES = ["new", "opinion", "sport", "life style", "culture"];
   return (
     <StyledNavConatiner>
-      <StyledNavTop>
-        <Box component="div">
-          {date_raw} {month_raw} {date_number},{year}
-        </Box>
-        <StyledNavTopRight>
-          <StyledRightOne>
-            <StyledRightOneConatiner>
-              <PersonIconNav />
-            </StyledRightOneConatiner>
-            <Typography sx={{ margin: "10px", fontSize: "12px" }} component={'span'} variant={"body2"}>
-              Sign in
-            </Typography>
-          </StyledRightOne>
-          <Box>
-            <FormControl>
-              <StylesSelected
-                value={selected}
-                onChange={handleChange}
-                inputProps={{
-                  name: "agent",
-                  id: "age-simple",
-                }}
-              >
-                {values.map((value, index) => {
-                  return <MenuItem key={index} value={value}>{value}</MenuItem>;
+      {isMatch ? (
+        <StypledMedia>
+          <Box sx={{ padding: " 20px" }}>
+            <img src={Logo} height="70px" width="130px" />
+          </Box>
+          <DrawerList />
+        </StypledMedia>
+      ) : (
+        <StyledNavConatiner>
+          <StyledNavTop>
+            <Box component="div">
+              {date_raw} {month_raw} {},{year}
+            </Box>
+            <StyledNavTopRight>
+              <StyledRightOne>
+                <StyledRightOneConatiner>
+                  <PersonIconNav />
+                </StyledRightOneConatiner>
+                <Typography
+                  sx={{ margin: "10px", fontSize: "12px" }}
+                  component={"span"}
+                  variant={"body2"}
+                >
+                  Sign in
+                </Typography>
+              </StyledRightOne>
+              <Box>
+                <FormControl>
+                  <StylesSelected
+                    value={selected}
+                    onChange={handleChange}
+                    inputProps={{
+                      name: "agent",
+                      id: "age-simple",
+                    }}
+                  >
+                    {values.map((value, index) => {
+                      return (
+                        <MenuItem key={index} value={value}>
+                          {value}
+                        </MenuItem>
+                      );
+                    })}
+                  </StylesSelected>
+                </FormControl>
+              </Box>
+            </StyledNavTopRight>
+          </StyledNavTop>
+          <StyledImage>
+            <img src={Logo} height="70px" width="160px" />
+          </StyledImage>
+          <StyledNavBottom>
+            <StyledListNavLeft>
+              <Tabs value={value} onChange={(e, value) => setValue(value)}>
+                {PAGES.map((page, index) => {
+                  return <StyledListNavLeftContent label={page} key={index} />;
                 })}
-              </StylesSelected>
-            </FormControl>
-          </Box>
-        </StyledNavTopRight>
-      </StyledNavTop>
-      <StyledImage>
-        <img src={Logo} height="70px" width="160px" />
-      </StyledImage>
-      <StyledNavBottom>
-        <StyledListNavLeft>
-          <StyledListNavLeftContent>new</StyledListNavLeftContent>
-          <StyledListNavLeftContent>opinion</StyledListNavLeftContent>{" "}
-          <StyledListNavLeftContent>sport</StyledListNavLeftContent>{" "}
-          <StyledListNavLeftContent>life style</StyledListNavLeftContent>
-          <StyledListNavLeftContent>culture</StyledListNavLeftContent>
-          <StyledListNavLeftContent
-            onClick={toggle}
-            sx={{ display: "flex", alignItems: "center" }}
-          >
-            More
-            <KeyboardArrowDownIcon sx={{ marginTop: "10px" }} />
-          </StyledListNavLeftContent>
-          <Box>
-            {isOpened && (
-              <StyledBox>
-                <Grid container sx={{ marginLeft: "10px" }}>
-                  <Grid item xs={2}>
-                    <Box>Cartoon</Box>
-                    <Box sx={{marginTop:"10px"}}>Video </Box>
 
-                  </Grid>
-                  <Grid item xs={1}>
-                    <StyledBorsder />
-                  </Grid>
-                  <Grid item xs={2}>
-                    <Box>Football</Box>
-                    <Box sx={{marginTop:"10px"}}>Golf </Box>
-                    <Box sx={{marginTop:"10px"}}>Boxing </Box>
-                    <Box sx={{marginTop:"10px"}}>US Sport </Box>
+                <StyledListNavLeftMore
+                  onClick={toggle}
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
+                  more
+                  <KeyboardArrowDownIcon sx={{ marginTop: "7px" }} />
+                </StyledListNavLeftMore>
+              </Tabs>
 
-
-                  </Grid>
-                  <Grid item xs={1}>
-                    <StyledBorsder />
-                  </Grid>
-                  <Grid item xs={2}>
-                    <Box>Food</Box>
-                    <Box sx={{marginTop:"10px"}}>Family </Box>
-                    <Box sx={{marginTop:"10px"}}>Health </Box>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <StyledBorsder />
-                  </Grid>
-                  <Grid item xs={2}>
-                    <Box>Flim</Box>
-                    <Box sx={{marginTop:"10px"}}>Music </Box>
-                    <Box sx={{marginTop:"10px"}}>Art & design </Box>
-
-                  </Grid>
-                </Grid>
-              </StyledBox>
-            )}
-          </Box>
-        </StyledListNavLeft>
-        <StyledListNavRight>
-          <FormControl sx={{ m: 5, width: "25ch" }} variant="outlined">
-            <OutlinedInput
-              sx={{ height: "30px", borderRadius: "40px", color: "white" }}
-              id="outlined-adornment-weight"
-              endAdornment={
-                <InputAdornment position="end">
-                  <SearchIcon sx={{ color: "white" }} />
-                </InputAdornment>
-              }
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                "aria-label": "weight",
-              }}
-            />
-          </FormControl>
-          <FormGroup>
-            <FormControlLabel
-              control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-              label=""
-            />
-          </FormGroup>
-        </StyledListNavRight>
-      </StyledNavBottom>
+              <Box>
+                {isOpened && (
+                  <StyledBox>
+                    <Grid container sx={{ marginLeft: "10px" }}>
+                      <Grid item xs={2}>
+                        <Box>Cartoon</Box>
+                        <Box sx={{ marginTop: "10px" }}>Video </Box>
+                      </Grid>
+                      <Grid item xs={1}>
+                        <StyledBorsder />
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Box>Football</Box>
+                        <Box sx={{ marginTop: "10px" }}>Golf </Box>
+                        <Box sx={{ marginTop: "10px" }}>Boxing </Box>
+                        <Box sx={{ marginTop: "10px" }}>US Sport </Box>
+                      </Grid>
+                      <Grid item xs={1}>
+                        <StyledBorsder />
+                      </Grid>
+                      <Grid item xs={3}>
+                        <Box>Food</Box>
+                        <Box sx={{ marginTop: "10px" }}>Family </Box>
+                        <Box sx={{ marginTop: "10px" }}>Health </Box>
+                      </Grid>
+                      <Grid item xs={1}>
+                        <StyledBorsder />
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Box>Flim</Box>
+                        <Box sx={{ marginTop: "10px" }}>Music </Box>
+                        <Box sx={{ marginTop: "10px" }}>Art & design </Box>
+                      </Grid>
+                    </Grid>
+                  </StyledBox>
+                )}
+              </Box>
+            </StyledListNavLeft>
+            <StyledListNavRight>
+              <FormControl sx={{ m: 5, width: "25ch" }} variant="outlined">
+                <OutlinedInput
+                  sx={{ height: "30px", borderRadius: "40px", color: "white" }}
+                  id="outlined-adornment-weight"
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <SearchIcon sx={{ color: "white" }} />
+                    </InputAdornment>
+                  }
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    "aria-label": "weight",
+                  }}
+                />
+              </FormControl>
+              <FormGroup>
+                <FormControlLabel
+                  control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+                  label=""
+                />
+              </FormGroup>
+            </StyledListNavRight>
+          </StyledNavBottom>
+        </StyledNavConatiner>
+      )}
     </StyledNavConatiner>
   );
 };
