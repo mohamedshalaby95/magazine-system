@@ -64,86 +64,8 @@ const Footer = () => {
               <StyledFooterButton>Sign up for MAGZ</StyledFooterButton>
             </StyledGridLeftTextMedia>
           </StyledGridLeft>
-          <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-            <StyledGridRight>
-              <StyledGridRightTitle>
-                popular posts
-                <StyledGridRightLine />
-              </StyledGridRightTitle>
-              <StyledGridRightTitle>
-                <Box
-                  component="img"
-                  src={Person}
-                  sx={{ height: "50px", width: "80px" }}
-                />
-                <BoxStyleTwo>
-                  Kylie Jenner, Bella Hadid, and More Celebrities…
-                  <BoxStyle>Nov 20, 2020</BoxStyle>
-                </BoxStyleTwo>
-              </StyledGridRightTitle>
-              <StyledGridRightTitle>
-                <Box
-                  component="img"
-                  src={Person}
-                  sx={{ height: "50px", width: "80px" }}
-                />
-                <BoxStyleTwo>
-                  Kylie Jenner, Bella Hadid, and More Celebrities…
-                  <BoxStyle>Nov 20, 2020</BoxStyle>
-                </BoxStyleTwo>
-              </StyledGridRightTitle>{" "}
-              <StyledGridRightTitle>
-                <Box
-                  component="img"
-                  src={Person}
-                  sx={{ height: "50px", width: "80px" }}
-                />
-                <BoxStyleTwo>
-                  Kylie Jenner, Bella Hadid, and More Celebrities…
-                  <BoxStyle>Nov 20, 2020</BoxStyle>
-                </BoxStyleTwo>
-              </StyledGridRightTitle>
-            </StyledGridRight>
-            <StyledGridRight>
-              <StyledGridRightTitle>
-                popular posts
-                <StyledGridRightLine />
-              </StyledGridRightTitle>
-              <StyledGridRightTitle>
-                <Box
-                  component="img"
-                  src={Person}
-                  sx={{ height: "50px", width: "80px" }}
-                />
-                <BoxStyleTwo>
-                  Kylie Jenner, Bella Hadid, and More Celebrities…
-                  <BoxStyle>Nov 20, 2020</BoxStyle>
-                </BoxStyleTwo>
-              </StyledGridRightTitle>
-              <StyledGridRightTitle>
-                <Box
-                  component="img"
-                  src={Person}
-                  sx={{ height: "50px", width: "80px" }}
-                />
-                <BoxStyleTwo>
-                  Kylie Jenner, Bella Hadid, and More Celebrities…
-                  <BoxStyle>Nov 20, 2020</BoxStyle>
-                </BoxStyleTwo>
-              </StyledGridRightTitle>{" "}
-              <StyledGridRightTitle>
-                <Box
-                  component="img"
-                  src={Person}
-                  sx={{ height: "50px", width: "80px" }}
-                />
-                <BoxStyleTwo>
-                  Kylie Jenner, Bella Hadid, and More Celebrities…
-                  <BoxStyle>Nov 20, 2020</BoxStyle>
-                </BoxStyleTwo>
-              </StyledGridRightTitle>
-            </StyledGridRight>
-          </Box>
+          <PopularPosts />
+            <PopularPosts />
           <StyledLineMedai />
           <StyledFooterBottom>
             © 2022 - MAGZ. All Rights Reserved.
