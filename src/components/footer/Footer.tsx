@@ -64,8 +64,8 @@ const Footer = () => {
               <StyledFooterButton>Sign up for MAGZ</StyledFooterButton>
             </StyledGridLeftTextMedia>
           </StyledGridLeft>
-          <PopularPosts />
-            <PopularPosts />
+          <PopularPosts data="Any Description" date="125"/>
+            <PopularPosts data="Any Description" date="125"/>
           <StyledLineMedai />
           <StyledFooterBottom>
             © 2022 - MAGZ. All Rights Reserved.
