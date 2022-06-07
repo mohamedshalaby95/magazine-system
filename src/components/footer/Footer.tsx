@@ -1,3 +1,4 @@
+import React from 'react';
 import Logo from "../../assets/logoFooter.png";
 import Person from "../../assets/person.png";
 import PopularPosts from "../popularPosts/PopularPosts";
@@ -19,6 +20,7 @@ import {
 const Footer = () => {
    const theme = useTheme();
  const isMatch = useMediaQuery(theme.breakpoints.down(1117));
+
   return (
     <Box>
       {!isMatch ? (
@@ -39,10 +41,8 @@ const Footer = () => {
               </StyledGridLeftText>
             </StyledGridLeft>
 
-            <PopularPosts />
-            <PopularPosts />
-
-
+            <PopularPosts data="Any Description" date="125"/>
+            <PopularPosts data="Any Description" date="125"/>
             
           </Grid>
 
