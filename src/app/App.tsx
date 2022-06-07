@@ -11,7 +11,9 @@ import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Header from "../components/header/Header";
 import Image from "../assets/background.png";
-
+import Today from "../components/home/Today";
+import Opinion from "../components/home/Opinion";
+import Sport from "../components/home/Sport";
 function App() {
   const Home = styled(Box)(({ theme }) => ({
     backgroundImage: `url(${Image})`,
@@ -32,18 +34,20 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Home>
+        <Home/>
           <Suspense fallback={<div>Loaaaaaading.....</div>}>
             <BrowserRouter>
               <Info>
                 <Header />
-               
-                pages
-                {/* <Footer/> */}
+               <Today/>
+                  <Opinion/>
+                  <Sport/>
+                
+
               </Info>
             </BrowserRouter>
           </Suspense>
-        </Home>
+        
       </ThemeProvider>
     </Provider>
   );
