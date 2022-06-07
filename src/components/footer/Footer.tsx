@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import Logo from "../../assets/logoFooter.png";
 import Person from "../../assets/person.png";
-import PopularPosts from "../popularPosts/PopularPosts";
+import PopularPosts from "../popularPosts/populatPosts";
 import { Box, Button, Grid, useMediaQuery, useTheme } from "@mui/material";
 import {
   StyledFooter,
@@ -10,16 +10,13 @@ import {
   StyledFooterMedia,
   StyledGridLeft,
   StyledGridLeftText,
-  StyledGridRight,
-  StyledGridRightTitle,
-  StyledGridRightLine,
-  BoxStyleTwo,
-  BoxStyle,
-  StyledLine,StyledLineMedai,StyledGridLeftTextMedia
+  StyledLine,
+  StyledLineMedai,
+  StyledGridLeftTextMedia,
 } from "../../styled/Footer";
 const Footer = () => {
-   const theme = useTheme();
- const isMatch = useMediaQuery(theme.breakpoints.down(1117));
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down(1117));
 
   return (
     <Box>
@@ -41,9 +38,8 @@ const Footer = () => {
               </StyledGridLeftText>
             </StyledGridLeft>
 
-            <PopularPosts data="Any Description" date="125"/>
-            <PopularPosts data="Any Description" date="125"/>
-            
+            <PopularPosts data="Any Description" date="125" />
+            <PopularPosts data="Any Description" date="125" />
           </Grid>
 
           <StyledLine />
@@ -64,8 +60,8 @@ const Footer = () => {
               <StyledFooterButton>Sign up for MAGZ</StyledFooterButton>
             </StyledGridLeftTextMedia>
           </StyledGridLeft>
-          <PopularPosts data="Any Description" date="125"/>
-            <PopularPosts data="Any Description" date="125"/>
+          <PopularPosts data="Any Description" date="125" />
+          <PopularPosts data="Any Description" date="125" />
           <StyledLineMedai />
           <StyledFooterBottom>
             © 2022 - MAGZ. All Rights Reserved.
